@@ -19,6 +19,7 @@ class CategoriaProfissional(models.Model):
     class Meta:
         verbose_name_plural = "Categorias Profissionais"
 
+
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100)
     vinculo = models.ForeignKey(Vinculo, on_delete=models.PROTECT)
