@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'blocos',
-    'funcionarios'
+    'funcionarios',
+    'escalas'
 ]
 
 X_FRAME_OPTIONS='SAMEORIGIN'
