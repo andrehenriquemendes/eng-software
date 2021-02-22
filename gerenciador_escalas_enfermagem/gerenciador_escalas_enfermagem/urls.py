@@ -26,8 +26,6 @@ router.register(r'bloco', BlocoViewSet, basename='bloco')
 router.register(r'unidade', UnidadeViewSet, basename='unidade')
 router.register(r'funcionario', FuncionarioViewSet, basename='funcionario')
 router.register(r'escala', EscalaViewSet, basename='escala')
-router.register(r'periodo_mes', EscalaViewSet, basename='periodo_mes')
-router.register(r'ponto', EscalaViewSet, basename='ponto')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

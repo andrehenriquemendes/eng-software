@@ -31,12 +31,12 @@ class Escala(models.Model):
         ('SNII', 'SNII'),
     )
 
-    unidade = models.ForeignKey(Unidade, on_delete=models.PROTECT)
     funcionario = models.ForeignKey(Funcionario, on_delete=models.PROTECT)
+    unidade = models.ForeignKey(Unidade, on_delete=models.PROTECT)
     horario_entrada = models.TimeField()
     horario_saida = models.TimeField()
-    tipo_escala = models.CharField(choices=TIPOS_ESCALAS, max_length=100)
+    tipo_escala = models.CharField(choices=TIPOS_ESCALAS, max_length=100, null=True)
     periodo_mes = models.ForeignKey(PeriodoMes, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.nome
+        return f'{self.funcionario} - {self.unidade} - {self.periodo_mes}'
