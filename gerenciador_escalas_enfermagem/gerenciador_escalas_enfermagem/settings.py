@@ -145,7 +145,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-django_heroku.settings(locals())
+
 
 # simple jwt settings
 # https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
@@ -178,3 +178,4 @@ REST_FRAMEWORK = {
     )
 }
 
+django_heroku.settings(locals())
