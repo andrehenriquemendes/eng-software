@@ -7,6 +7,7 @@ class BlocoSerializer(ModelSerializer):
     class Meta:
         model = Bloco
         fields = ('id', 'nome')
+        
 
 
 class UnidadeSerializer(ModelSerializer):
@@ -14,3 +15,8 @@ class UnidadeSerializer(ModelSerializer):
     class Meta:
         model = Unidade
         fields = ('id', 'nome', 'bloco')
+
+    def to_representation(self, instance):
+       ret = super().to_representation(instance)
+       ret['bloco'] = BlocoSerializer(instance.bloco).data
+       return ret
