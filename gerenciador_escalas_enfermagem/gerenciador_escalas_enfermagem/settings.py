@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!sl$o$=_4aodm-j$6i_v%r7%brbqciuwz38ysfh(e!&m7hwn36'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG') == True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://api-gerenciador-escalas.herokuapp.com/']
 
 
 # Application definition
@@ -134,8 +134,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
 ]
+
+django_heroku.settings(locals())
