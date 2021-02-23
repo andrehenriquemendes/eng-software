@@ -86,8 +86,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'escalaenfermagem',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'USER': 'gjr',
+        'PASSWORD': 'senhakk322',
         'HOST': 'localhost'
     }
 }
