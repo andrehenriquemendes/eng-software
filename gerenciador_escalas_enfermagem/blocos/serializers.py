@@ -10,7 +10,6 @@ class BlocoSerializer(ModelSerializer):
 
 
 class UnidadeSerializer(ModelSerializer):
-    bloco = BlocoSerializer()
 
     class Meta:
         model = Unidade
