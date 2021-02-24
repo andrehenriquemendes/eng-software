@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework import routers
 from blocos.views import BlocoViewSet, UnidadeViewSet
 from funcionarios.views import FuncionarioViewSet, VinculoViewSet, CategoriaProfissionalViewSet
-from escalas.views import EscalaViewSet
+from escalas.views import EscalaViewSet, PontoViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -35,6 +35,7 @@ router.register(r'vinculo', VinculoViewSet, basename='vinculo')
 router.register(r'categoria-profissional', CategoriaProfissionalViewSet, basename='categoria-profissional')
 
 router.register(r'escala', EscalaViewSet, basename='escala')
+router.register(r'ponto', PontoViewSet, basename='ponto')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

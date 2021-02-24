@@ -48,3 +48,21 @@ class PontoViewSet(ModelViewSet):
     queryset = Ponto.objects.all()
     serializer_class = PontoSerializer
 
+    def create(self, request, *args, **kwargs):
+        data = request.data
+
+        lista_presenca = []
+        for instancia in data:
+            ponto = Ponto(
+                funcionario_id=instancia['funcionario'],
+                esta_presente=instancia['estapresente'],
+                dia=instancia['dia']
+            )
+            lista_presenca.append(ponto)
+        
+        Ponto.objects.bulk_create(lista_presenca)
+
+        queryset = Ponto.objects.all()
+        serializer = PontoSerializer(queryset, many=True)
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
