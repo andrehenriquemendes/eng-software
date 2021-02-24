@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import { Table, Form, Button, Card, Accordion, Col } from 'react-bootstrap'
 import { BsFillXSquareFill } from 'react-icons/bs';
 
-const url = 'http://127.0.0.1:8000/vinculo/'
+const url = "http://18.224.214.17:8000/"
+const urlVinculo = url + 'vinculo/'
+
 class Vinculo extends Component {
   constructor(props) {
     super(props);
@@ -22,12 +24,12 @@ class Vinculo extends Component {
 
   handleChange(e) {
     this.setState({[e.target.id]: e.target.value})
-    console.log(this.state.newVinculo)
+    //console.log(this.state.newVinculo)
   } 
 
   handleSubmit(e) {
     try { 
-      fetch(url, {
+      fetch(urlVinculo, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -50,7 +52,7 @@ class Vinculo extends Component {
 
   componentDidMount() {
     try { 
-      fetch(url, {
+      fetch(urlVinculo, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

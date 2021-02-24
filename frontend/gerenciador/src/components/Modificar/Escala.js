@@ -6,9 +6,10 @@ import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 import { v1 as uuid } from 'uuid'
 
-const url = 'http://127.0.0.1:8000/escala/'
-const urlFuncionario = 'http://127.0.0.1:8000/funcionario/'
-const urlUnidade = 'http://127.0.0.1:8000/unidade/'
+const url = "http://18.224.214.17:8000"
+const urlEscala = url + '/escala/'
+const urlFuncionario = url + '/funcionario/'
+const urlUnidade = url + '/unidade/'
 
 
 class Escala extends Component {
@@ -106,7 +107,7 @@ class Escala extends Component {
           "horario_saida": JSON.stringify(this.state.horarioSaida.toTimeString()).substr(1, 8)
         })
       }
-      await fetch(url, {
+      await fetch(urlEscala, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -173,7 +174,7 @@ class Escala extends Component {
 
   componentDidMount() {
     try { 
-      fetch(url, {
+      fetch(urlEscala, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import { Table, Form, Button, Card, Accordion, Col } from 'react-bootstrap'
 import { BsFillXSquareFill } from 'react-icons/bs';
 
-const url = 'http://127.0.0.1:8000/categoria-profissional/'
+const url = "http://18.224.214.17:8000"
+const urlCategoria = url + '/categoria-profissional/'
+
 class CategoriaProfissional extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class CategoriaProfissional extends Component {
 
   handleSubmit(e) {
     try { 
-      fetch(url, {
+      fetch(urlCategoria, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -50,7 +52,7 @@ class CategoriaProfissional extends Component {
 
   componentDidMount() {
     try { 
-      fetch(url, {
+      fetch(urlCategoria, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -70,7 +72,7 @@ class CategoriaProfissional extends Component {
     if (this.state.name === null || this.state.name === null) return
     //console.warn("nome", this.state.nome)
     //console.warn("url", url + this.state.id + '/')
-    fetch(url + this.state.id + '/', {
+    fetch(urlCategoria + this.state.id + '/', {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

@@ -3,16 +3,14 @@ import React, { Component } from 'react'
 import { Table, Form, Button, Card, Accordion, Col } from 'react-bootstrap'
 import { BsFillXSquareFill } from 'react-icons/bs';
 
-const urlFuncionario = 'http://127.0.0.1:8000/funcionario/'
-const urlVinculo = 'http://127.0.0.1:8000/vinculo/'
-const urlCategoria = 'http://127.0.0.1:8000/categoria-profissional/'
+const url = "http://18.224.214.17:8000"
+const urlFuncionario = url + '/funcionario/'
+const urlVinculo = url + '/vinculo/'
+const urlCategoria = url + '/categoria-profissional/'
 
 class Funcionario extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
     this.state = {
       lists: [],
       vinculoList: [],
@@ -20,36 +18,45 @@ class Funcionario extends Component {
       id: null,
       nome: null,
       novoFuncionario: null,
-      novoVinculo: null,
-      novoCategoria: null,
       novoRfre: null,
-      novoCoren: null
+      novoCoren: null,
+      novaCategoria: null,
+      novoVinculo: null
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleSubmit(e) {
-    //console.warn("novoBloco", this.state.novoBloco)
-    try { 
+    console.warn("novoBloco", this.state)
+    console.warn("novofuncionario", this.state.novoFuncionario)
+    console.warn("novorfre", this.state.novoRfre)
+    console.warn("novocoren", this.state.novoCoren)
+    console.warn("novacategoria", this.state.novaCategoria)
+    console.warn("novovinculo", this.state.novoVinculo)
+    e.preventDefault()
+    try {
       fetch(urlFuncionario, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8'
-      },
-      body: JSON.stringify({
-        "nome": this.state.novoNome,
-        "rfre": this.state.novoRfre,
-        "coren": this.state.novoCoren,
-        "categoria": this.state.novoCategoria.id,
-        "vinculo": this.state.novoVinculo.id
-      })
-      }).then(response => { 
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify({
+          "nome": this.state.novoFuncionario,
+          "rfre": this.state.novoRfre,
+          "coren": this.state.novoCoren,
+          "categoria": this.state.novaCategoria,
+          "vinculo": this.state.novoVinculo
+        })
+      }).then(response => {
           console.warn("response", response)
       })
     } catch(error) {
       console.error(error)
     }
-    e.preventDefault()
+    console.log("afa")
   }
 
   handleChange(e) {
@@ -103,24 +110,25 @@ class Funcionario extends Component {
     var val
     try {
       val = JSON.parse(access)["access"]
+      console.warn("nome", this.state.nome)
+      console.warn("url", urlFuncionario + this.state.id + '/')
+      fetch(urlFuncionario + this.state.id + '/', {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization': 'Bearer ' + val
+        },
+        body: JSON.stringify({
+          'nome': this.state.nome
+        })
+      })
     } catch(e) {
       console.log(e)
       return false
     }
 
-    console.warn("nome", this.state.nome)
-    console.warn("url", urlFuncionario + this.state.id + '/')
-    fetch(urlFuncionario + this.state.id + '/', {
-      method: 'DELETE',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization': 'Bearer ' + val
-      },
-      body: JSON.stringify({
-        'nome': this.state.nome
-      })
-    })
+    
   }
 
   componentDidMount() {
@@ -155,7 +163,7 @@ class Funcionario extends Component {
             <Card.Body>
           <Form onSubmit={this.handleSubmit}>
     <Form.Row>
-      <Form.Group as={Col} controlId="novoNome">
+      <Form.Group as={Col} controlId="novoFuncionario">
         <Form.Label>Nome</Form.Label>
         <Form.Control type="text" placeholder="Nome do funcionário" onChange={this.handleChange} />
       </Form.Group>
@@ -164,19 +172,19 @@ class Funcionario extends Component {
   <Form.Row>
     <Form.Group as={Col} controlId="novoVinculo">
         <Form.Label>Vinculo</Form.Label>
-        <Form.Control as="select" value={this.state.novoVinculo} onChange={this.handleChange}>
+        <Form.Control as="select" onChange={this.handleChange}>
         <option>Escolha...</option>
         {this.state.vinculoList.map((list) =>
-        <option value={list.nome}>{list.nome}</option>
+        <option value={list.id}>{list.nome}</option>
         )}
         </Form.Control>
       </Form.Group>
     <Form.Group as={Col} controlId="novaCategoria">
         <Form.Label>Categoria profissional</Form.Label>
-        <Form.Control as="select" value={this.state.novoCategoria} onChange={this.handleChange}>
+        <Form.Control as="select" onChange={this.handleChange}>
         <option>Escolha...</option>
         {this.state.categoriaList.map((list) =>
-        <option value={list.nome}>{list.nome}</option>
+        <option value={list.id}>{list.nome}</option>
         )}
         </Form.Control>
       </Form.Group>
@@ -184,16 +192,16 @@ class Funcionario extends Component {
   <Form.Row>
     <Form.Group as={Col} controlId="novoRfre">
       <Form.Label>Rfre</Form.Label>
-      <Form.Control type="text" placeholder="Rfre" value={this.state.novoRfre} onChange={this.handleChange} />
+      <Form.Control type="text" placeholder="Rfre"  onChange={this.handleChange} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="novoCoren">
       <Form.Label>Coren</Form.Label>
-      <Form.Control type="text" placeholder="Coren" value={this.state.novoCoren} onChange={this.handleChange} />
+      <Form.Control type="text" placeholder="Coren" onChange={this.handleChange} />
     </Form.Group>
   </Form.Row>
 
-  <Button variant="danger" type="submit">
+  <Button variant="danger" type="submit" value="submit">
   Criar
   </Button>
 </Form>
@@ -229,12 +237,9 @@ class Funcionario extends Component {
           <th>{funcionario.coren}</th>
           <th>
             <th className="options"
-                onMouseOver={"delete"}
-                onClick={() => { 
-                  this.setState({ nome: funcionario.nome, id: funcionario.id });
-                  this.handleDelete() 
-                }}
-                ><BsFillXSquareFill /></th>
+              onMouseOver={() => {this.setState({nome: funcionario.nome, id: funcionario.id})}}
+              onClick={() => {this.handleDelete()}}><BsFillXSquareFill />
+            </th>
             </th>
         </tr>
         )}

@@ -2,8 +2,9 @@ import React from 'react'
 import { Component } from 'react'
 export const AuthContext = React.createContext({})
 
-const url = 'http://127.0.0.1:8000/token/verify/'
-const urlRefresh = 'http://127.0.0.1:8000/token/refresh/'
+const url = "http://18.224.214.17:8000"
+const urlVerify = url + '/token/verify/'
+const urlRefresh = url + '/token/refresh/'
 const token = localStorage.getItem('auth')
 
 export default class isAuth extends Component {
@@ -66,7 +67,7 @@ export default class isAuth extends Component {
     }
 
     try {
-      fetch(url, {
+      fetch(urlVerify, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
