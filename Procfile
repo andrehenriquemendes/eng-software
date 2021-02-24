@@ -1,1 +1,1 @@
-web: gunicorn gerenciador_escalas_enfermagem.wsgi
+web: gunicorn gerenciador_escalas_enfermagem/gerenciador_escalas_enfermagem.wsgi
