@@ -11,7 +11,7 @@ class VinculoSerializer(ModelSerializer):
 
 class CategoriaProfissionalSerializer(ModelSerializer):
     class Meta:
-        model = Vinculo
+        model = CategoriaProfissional
         fields = ('id', 'nome', 'abreviacao')
 
 
