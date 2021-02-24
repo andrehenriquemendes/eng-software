@@ -19,6 +19,9 @@ class Ponto(models.Model):
     dia = models.DateField()
     esta_presente = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f'{self.funcionario} {self.dia} - Presente? {self.esta_presente}'
+
 
 class Escala(models.Model):
     TIPOS_ESCALAS = (

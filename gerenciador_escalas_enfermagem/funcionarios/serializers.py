@@ -16,9 +16,13 @@ class CategoriaProfissionalSerializer(ModelSerializer):
 
 
 class FuncionarioSerializer(ModelSerializer):
-    vinculo = VinculoSerializer()
-    categoria = CategoriaProfissionalSerializer()
 
     class Meta:
         model = Funcionario
         fields = ('id', 'nome', 'rfre', 'coren', 'categoria', 'vinculo')
+    
+    def to_representation(self, instance):
+       ret = super().to_representation(instance)
+       ret['vinculo'] = VinculoSerializer(instance.vinculo).data
+       ret['categoria'] = CategoriaProfissionalSerializer(instance.categoria).data
+       return ret

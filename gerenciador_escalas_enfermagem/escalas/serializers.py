@@ -14,13 +14,6 @@ class PeriodoMesSerializer(ModelSerializer):
         fields = '__all__'
 
 
-class PontoSerializer(ModelSerializer):
-
-    class Meta:
-        model = Ponto
-        fields = '__all__'
-
-
 class EscalaListSerializer(ModelSerializer):
     unidade = UnidadeSerializer()
     funcionario = FuncionarioSerializer()
@@ -61,3 +54,15 @@ class EscalaPeriodoMesSerializer(ModelSerializer):
     class Meta:
         model = PeriodoMes
         fields = ('id', 'data_inicio', 'data_fim', 'escala_set')
+
+
+class PontoSerializer(ModelSerializer):
+
+    class Meta:
+        model = Ponto
+        fields = '__all__'
+    
+    def to_representation(self, instance):
+       ret = super().to_representation(instance)
+       ret['funcionario'] = FuncionarioSerializer(instance.funcionario).data
+       return ret
