@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'gerenciador_escalas_enfermagem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'escalaenfermagem',
-        'USER': 'gjr',
-        'PASSWORD': 'senhakk322',
+        'NAME': 'escala-enfermagem',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost'
     }
 }
