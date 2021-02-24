@@ -1,0 +1,26 @@
+.Content {
+  padding-top: 5px;
+}
+.Menu {
+  top: 0;
+}
+
+.nav-pills .na-link {
+  color: black;
+}
+
+.nav-pills .nav-link.active { 
+  background-color: #4C5B61; 
+}
+
+.Escala {
+  padding: 5px;
+}
+
+.addFuncionarios {
+  margin: 5px;
+}
+
+.listaFuncionarios {
+  margin: 5px;
+}
