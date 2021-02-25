@@ -12,13 +12,6 @@ class EscalaViewSet(ModelViewSet, mixins.CreateModelMixin, mixins.ListModelMixin
     queryset = Escala.objects.all()
     serializer_class = EscalaSerializer
 
-    def list(self, request, *args, **kwargs):
-        queryset = PeriodoMes.objects.all()
-        serializer = EscalaPeriodoMesSerializer(queryset, many=True)
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
     def create(self, request, *args, **kwargs):
         data = request.data
         periodo_inicio = data.get('periodo')['inicio']
