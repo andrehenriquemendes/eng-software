@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Table } from 'react-bootstrap'
 import { withRouter } from 'react-router-dom';
 
-const url = 'http://127.0.0.1:8000/bloco/'
+const url = "http://18.224.214.17:8000"
+const urlBloco = url + '/bloco/'
 class Bloco extends Component {
   constructor() {
     super();
@@ -12,7 +13,7 @@ class Bloco extends Component {
   }
   componentDidMount() {
     this.setState({ isLoading: true })
-    fetch(url, {
+    fetch(urlBloco, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

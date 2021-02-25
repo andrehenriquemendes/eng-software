@@ -2,7 +2,8 @@ import { withRouter } from "react-router-dom";
 import React, { Component } from 'react'
 import { Table } from 'react-bootstrap'
 
-const urlFuncionario = 'http://127.0.0.1:8000/funcionario/'
+const url = "http://18.224.214.17:8000"
+const urlFuncionario = url + '/funcionario/'
 
 class Funcionario extends Component {
   constructor(props) {

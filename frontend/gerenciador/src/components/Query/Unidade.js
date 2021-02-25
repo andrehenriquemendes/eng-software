@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Table } from 'react-bootstrap'
 
-const url = 'http://127.0.0.1:8000/unidade/'
+const url = "http://18.224.214.17:8000"
+const urlUnidade = url + '/unidade/'
 export default class Bloco extends Component {
   constructor() {
     super();
@@ -11,7 +12,7 @@ export default class Bloco extends Component {
   }
   componentDidMount() {
     this.setState({ isLoading: true })
-    fetch(url, {
+    fetch(urlUnidade, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

@@ -2,9 +2,10 @@ import { Button, Table, Tab, Col, Row, Nav } from 'react-bootstrap'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-const urlBloco = 'http://127.0.0.1:8000/bloco/'
-const urlUnidade = 'http://127.0.0.1:8000/unidade/'
-const urlEscala = 'http://127.0.0.1:8000/escala/'
+const url = "http://18.224.214.17:8000"
+const urlBloco = url + "/bloco/"
+const urlUnidade = url + '/unidade/'
+const urlEscala = url + '/escala/'
 
 class BaterPonto extends Component {
   constructor(props) {
@@ -57,6 +58,7 @@ class BaterPonto extends Component {
     this.get(urlBloco, 'blocoList')
     this.get(urlUnidade, 'unidadeList')
     this.get(urlEscala, 'escalaList')
+    console.log(this.state)
     //this.getUnidades()
     //console.warn("blocoList", this.state.blocoList)
   }

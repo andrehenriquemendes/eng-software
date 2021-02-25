@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import { Table, Form, Button, Card, Accordion, Col } from 'react-bootstrap'
 import { BsFillXSquareFill } from 'react-icons/bs';
 
-const url = 'http://127.0.0.1:8000/bloco/'
+const url = "http://18.224.214.17:8000"
+const urlBloco = url + '/bloco/'
+
 class Bloco extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +29,7 @@ class Bloco extends Component {
 
   async handleSubmit(e) {
     try { 
-      fetch(url, {
+      fetch(urlBloco, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -50,7 +52,7 @@ class Bloco extends Component {
 
   componentDidMount() {
     try { 
-      fetch(url, {
+      fetch(urlBloco, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

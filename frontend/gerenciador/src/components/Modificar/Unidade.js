@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 import { OverlayTrigger, Tooltip, Table, Form, Button, Card, Accordion, Col } from 'react-bootstrap'
 import { BsFillXSquareFill } from 'react-icons/bs';
 
-const url = 'http://127.0.0.1:8000/unidade/'
-const urlBloco = 'http://127.0.0.1:8000/bloco/'
+const url = "http://18.224.214.17:8000"
+const urlUnidade = url + '/unidade/'
+const urlBloco = url + '/bloco/'
 
 class Unidade extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Unidade extends Component {
   handleSubmit(e) {
     console.warn("novoBloco", this.state.novoBloco)
     try { 
-      fetch(url, {
+      fetch(urlUnidade, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -94,7 +95,7 @@ class Unidade extends Component {
 
   componentDidMount() {
     try {
-      fetch(url, {
+      fetch(urlUnidade, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',

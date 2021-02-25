@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import './login.css'
 
-const url = 'http://127.0.0.1:8000/token/'
+const url = "http://18.224.214.17:8000"
+const urlLogin = url + '/token/'
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ export default class Login extends Component {
   handleSubmit(e) {
     //console.log(this.state)
     try {
-      fetch(url, {
+      fetch(urlLogin, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

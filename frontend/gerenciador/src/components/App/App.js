@@ -1,6 +1,5 @@
 import { BrowserRouter as Switch, Route } from 'react-router-dom'
 import Consulta from '../Consulta.js'
-import Home from '../Home.js'
 import Escala from '../Escala.js'
 import Login from '../../Login.js'
 import { Container } from 'react-bootstrap'
